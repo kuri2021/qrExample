@@ -1,6 +1,7 @@
 package com.example.qrexample
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +34,9 @@ class ScanQR : AppCompatActivity() {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show()
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(result.contents))
+                startActivity(intent)
+                finish()
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)

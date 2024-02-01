@@ -1,6 +1,7 @@
 package com.example.qrexample
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -35,7 +36,8 @@ class MainActivity : AppCompatActivity() {
                 // todo
             } else {
                 Toast.makeText(this, "Scanned: " + result.contents, Toast.LENGTH_LONG).show()
-                // todo
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(result.contents))
+                startActivity(intent)
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
